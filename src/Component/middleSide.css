@@ -9,20 +9,20 @@
     border-left: 1px solid #d4d4d4;
 }
 
-.storyBlock{
+.storyBlock {
     width: 630px;
     height: 120px;
     display: flex;
     align-items: center;
     gap: 17px;
-    overflow-x: auto;   
+    overflow-x: auto;
 }
 
 .storyBlock::-webkit-scrollbar {
     display: none;
 }
 
-.storyParticular{
+.storyParticular {
     width: 66px;
     height: 66px;
     display: flex;
@@ -31,7 +31,7 @@
     align-items: center;
 }
 
-.imageDiv{
+.imageDiv {
     width: 56px;
     height: 56px;
     border-radius: 100%;
@@ -39,32 +39,32 @@
     border: 2px solid purple;
 }
 
-.statusImg{
+.statusImg {
     width: 100%;
     height: 56px;
     border-radius: 100%;
 }
 
-.profileName{
- font-size: 10px;   
+.profileName {
+    font-size: 10px;
 }
 
 
 /* --------- post section ----------- */
 
-.postSection{
+.postSection {
     /* border: 1px solid; */
     width: 60%;
 }
 
-.post{
+.post {
     width: 100%;
     border-bottom: 1px solid #999999;
     padding-bottom: 20px;
     margin-bottom: 20px;
 }
 
-.postInfo{
+.postInfo {
     width: 100%;
     display: flex;
     align-items: center;
@@ -72,54 +72,54 @@
     padding: 5px 0;
 }
 
-.postInfoImg{
+.postInfoImg {
     width: 30px;
     height: 25px;
     border-radius: 100%;
 }
 
-.postInfoUsername{
+.postInfoUsername {
     font-size: 12px;
     font-weight: 600;
 }
 
-.timinginfo{
+.timinginfo {
     color: #999999;
     font-size: 14px;
 }
 
-.postImage{
+.postImage {
     width: 100%;
 }
 
-.iconsBlock{
+.iconsBlock {
     width: 100%;
     padding: 5px 0;
     display: flex;
     justify-content: space-between;
 }
 
-.leftIcon{
+.leftIcon {
     display: flex;
     gap: 15px;
 }
 
-.likeImg{
+.likeImg {
     height: 20px;
     width: 20px;
     border-radius: 100%;
     position: absolute;
 }
 
-.imagesLike{
+.imagesLike {
     position: relative;
 }
 
-.likeSection{
+.likeSection {
     width: 100%;
 }
 
-.likeImg2{
+.likeImg2 {
     width: 20px;
     height: 20px;
     border-radius: 100%;
@@ -127,37 +127,72 @@
     left: 3%;
 }
 
-.noOfLikes{
+.noOfLikes {
     position: absolute;
     font-size: 14px;
     font-weight: 600;
     margin-left: 45px;
 }
 
-.postAbout{
+.postAbout {
     width: 100%;
     margin-top: 25px;
     display: flex;
 }
 
-.postAboutName{
+.postAboutName {
     font-size: 14px;
     font-weight: 500;
 }
 
-.infoComment{
+.infoComment {
     margin-left: 10px;
     font-size: 14px;
 }
 
-.noOfComment{
+.noOfComment {
     margin-top: 5px;
     color: #999999;
     font-size: 14px;
 }
 
-.addComment{
+.addComment {
     margin-top: 5px;
     color: #999999;
     font-size: 14px;
+}
+
+.mobileTopBar {
+    display: none;
+}
+
+@media screen and (min-width: 320px) and (max-width: 920px) {
+    .middleHomeSide {
+        width: 100%;
+        padding: 0px 1px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .storyBlock {
+        width: 100vw;
+    }
+
+    .postSection {
+        width: 100%;
+    }
+
+    .mobileTopBar {
+        display: inline;
+        width: 100%;
+        padding: 0 20px;
+    }
+
+    .instaMobileLogo{
+        width: 103px;
+        margin: 0 20px;
+    }
 }
