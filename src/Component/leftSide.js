@@ -1,8 +1,7 @@
 import './leftSide.css';
-import React from 'react';
 import instagramLogo from '../assets/instagramlogo.png';
 import profile from '../assets/profile.png';
-import { Add, AddBoxOutlined, EmailOutlined, Explore, FavoriteBorderOutlined, Gesture, Home, Menu, MusicVideo, Search } from '@mui/icons-material';
+import { Add, EmailOutlined, Explore, FavoriteBorderOutlined, Gesture, Home, Menu, MusicVideo, Search } from '@mui/icons-material';
 
 const LeftSide = () => {
     return (

@@ -1,7 +1,25 @@
 import "./rigjhtSide.css";
-import React from "react";
+import profile from '../assets/profile.png';
+import mockData from "../mockData.json";
+import { useState } from "react";
 
 const RightSide = () => {
+  const suggestedUsers = mockData.suggest;
+
+  const [followStates, setFollowStates] = useState(
+    suggestedUsers.reduce((acc, user) => {
+      acc[user.username] = false;
+      return acc;
+    }, {})
+  );
+
+  const handleClick = (username) => {
+    setFollowStates((prev) => ({
+      ...prev,
+      [username]: !prev[username],
+    }));
+  };
+
   return (
     <div className="rightSideHome">
       <div className="topProfileRight">
@@ -9,7 +27,7 @@ const RightSide = () => {
           <div className="imageDivRightSide">
             <img
               className="imageRightSideProfile"
-              src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
+              src={profile}
               alt="Profile"
             />
           </div>
@@ -26,70 +44,25 @@ const RightSide = () => {
           <div className="seeAll">See All</div>
         </div>
         <div className="followBlockRightSide">
-          <div className="profileRightBottom">
-            <div className="leftRightProfile">
-              <div className="imageDivRightSide">
-                <img
-                  className="imageRightSideProfile"
-                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                  alt="Profile"
-                />
+          {suggestedUsers.map((user, index) => (
+            <div className="profileRightBottom" key={index}>
+              <div className="leftRightProfile">
+                <div className="imageDivRightSide">
+                  <img className="imageRightSideProfile" src={user.profileImage} alt={user.fullName} />
+                </div>
+                <div className="usernameBlock">
+                  <div className="usernameRightSide">{user.username}</div>
+                  <div className="userFullName">{user.fullName}</div>
+                </div>
               </div>
-              <div className="usernameBlock">
-                <div className="usernameRightSide">__rumman</div>
-                <div className="userFullName">Alkami Siddik</div>
-              </div>
+              <button
+                className={`switchBtn ${followStates[user.username] ? "active" : ""}`}
+                onClick={() => handleClick(user.username)}
+              >
+                {followStates[user.username] ? "Following" : "Follow"}
+              </button>
             </div>
-            <div className="switchBtn">Follow</div>
-          </div>
-          <div className="profileRightBottom">
-            <div className="leftRightProfile">
-              <div className="imageDivRightSide">
-                <img
-                  className="imageRightSideProfile"
-                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                  alt="Profile"
-                />
-              </div>
-              <div className="usernameBlock">
-                <div className="usernameRightSide">__rumman</div>
-                <div className="userFullName">Alkami Siddik</div>
-              </div>
-            </div>
-            <div className="switchBtn">Follow</div>
-          </div>
-          <div className="profileRightBottom">
-            <div className="leftRightProfile">
-              <div className="imageDivRightSide">
-                <img
-                  className="imageRightSideProfile"
-                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                  alt="Profile"
-                />
-              </div>
-              <div className="usernameBlock">
-                <div className="usernameRightSide">__rumman</div>
-                <div className="userFullName">Alkami Siddik</div>
-              </div>
-            </div>
-            <div className="switchBtn">Follow</div>
-          </div>
-          <div className="profileRightBottom">
-            <div className="leftRightProfile">
-              <div className="imageDivRightSide">
-                <img
-                  className="imageRightSideProfile"
-                  src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZmlsZSUyMGltYWdlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
-                  alt="Profile"
-                />
-              </div>
-              <div className="usernameBlock">
-                <div className="usernameRightSide">__rumman</div>
-                <div className="userFullName">Alkami Siddik</div>
-              </div>
-            </div>
-            <div className="switchBtn">Follow</div>
-          </div>
+          ))}
         </div>
       </div>
     </div>

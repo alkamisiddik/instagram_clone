@@ -1,24 +1,18 @@
 import { BookmarkBorderOutlined, FavoriteBorderOutlined, ModeCommentOutlined, SendOutlined } from "@mui/icons-material";
 
-const Post = () => {
+const Post = ({post}) => {
   return (
     <div className="post">
       <div className="postInfo">
-        <img
-          className="postInfoImg"
-          alt="Post Profile"
-          src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=80"
-        />
-        <div className="postInfoUsername">Rumman</div>
-        <div className="timinginfo"> . 36 min</div>
+        <img className="postInfoImg" alt="Post Profile" src={post.profileImage} />
+        <div className="postInfoUsername">{post.username}</div>
+        <div className="timinginfo"> . {post.time}</div>
       </div>
+
       <div className="postImg">
-        <img
-          alt="Post"
-          className="postImage"
-          src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=80"
-        />
+        <img alt="Post" className="postImage" src={post.postImage} />
       </div>
+
       <div className="iconsBlock">
         <div className="leftIcon">
           <FavoriteBorderOutlined sx={{ fontSize: "25px" }} />
@@ -29,26 +23,22 @@ const Post = () => {
           <BookmarkBorderOutlined sx={{ fontSize: "25px" }} />
         </div>
       </div>
+
       <div className="likeSction">
         <div className="imagesLike">
-          <img
-            className="likeImg"
-            alt="Like 1"
-            src="https://images.unsplash.com/photo-1501854140801-50d01698950b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=80"
-          />
-          <img
-            className="likeImg2"
-            alt="Like 2"
-            src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1080&q=80"
-          />
+          {post.likedBy.map((img, index) => (
+            <img key={index} className={`likeImg${index > 0 ? index + 1 : ""}`} alt={`Like ${index + 1}`} src={img} />
+          ))}
         </div>
-        <div className="noOfLikes">112,456 Likes</div>
+        <div className="noOfLikes">{post.likes.toLocaleString()} Likes</div>
       </div>
+
       <div className="postAbout">
-        <div className="postAboutName">Alkami Siddik</div>
-        <div className="infoComment">Happy mother's day to my angel! ..</div>
+        <div className="postAboutName">{post.author}</div>
+        <div className="infoComment">{post.caption}</div>
       </div>
-      <div className="noOfComment">View all 456 comments</div>
+
+      <div className="noOfComment">View all {post.commentsCount} comments</div>
       <div className="addComment">Add a comment</div>
     </div>
   );

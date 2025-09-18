@@ -1,10 +1,11 @@
 import "./middleSide.css";
-import stories from "../storys.json";
+import mockData from "../mockData.json";
 import Post from "./Post/post";
 import instagramLogo from '../assets/instagramlogo.png';
 
 const MiddleSide = () => {
-  const story = stories.story;
+  const stories = mockData.story;
+  const posts = mockData.posts;
   return (
     <div className="middleHomeSide">
       <div className="mobileTopBar">
@@ -13,9 +14,9 @@ const MiddleSide = () => {
         </div>
       </div>
       <div className="storyBlock">
-        {story?.map((item, index) => {
+        {stories?.map((item, index) => {
           return (
-            <div className="storyParticular">
+            <div className="storyParticular" id={index}>
               <div className="imageDiv">
                 <img className="statusImg" src={item.url} alt="Status" />
               </div>
@@ -25,9 +26,9 @@ const MiddleSide = () => {
         })}
       </div>
       <div className="postSection">
-        <Post />
-        <Post />
-        <Post />
+        {posts.map((post) => (
+          <Post key={post.id} post={post} />
+        ))}
       </div>
     </div>
   );
